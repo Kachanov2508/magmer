@@ -22,15 +22,15 @@ export default {
 .nav {
 	display: grid;
 	grid-template-columns: repeat(3, max-content);
-    justify-content: right;
+	justify-content: right;
 	column-gap: 40px;
 	margin-top: 40px;
-    margin-right: 40px;
+	margin-right: 40px;
 }
 
 .nav a {
 	width: 40px;
-    height: 40px;
+	height: 40px;
 	box-shadow: 3px 3px 5px 0 #c6c6c6, -3px -3px 5px 0 #ffffff;
 	padding: 10px;
 	border-radius: 50%;
@@ -41,10 +41,9 @@ export default {
 }
 
 .nav a img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
 }
-
 </style>

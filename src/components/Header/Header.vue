@@ -14,18 +14,19 @@ export default {
 <style scoped>
 .header {
 	margin-top: 40px;
+	text-align: center;
 }
 
 h1 {
-	font-weight: 100;
-	font-size: 48px;
+	font-size: 50px;
+	font-weight: 300;
 	text-transform: uppercase;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 
 h2 {
-	font-weight: 100;
-	font-size: 30px;
+	font-weight: 300;
+	font-size: 31px;
 	text-transform: uppercase;
 }
 </style>
