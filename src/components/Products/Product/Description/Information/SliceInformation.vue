@@ -1,5 +1,5 @@
 <template>
-	<div class="description">
+	<div class="sliceInformation">
 		<h2>{{ sliceText(title, 20) }}</h2>
 		<p>{{ sliceText(description, 280) }}</p>
 	</div>
@@ -7,8 +7,8 @@
 
 <script>
 export default {
-	name: "Description",
-	props: ["title", "description"],
+	name: "SliceInformation",
+    props: ["title", "description"],
 	methods: {
 		sliceText(text, num) {
 			if (text.length > num) {
@@ -22,21 +22,23 @@ export default {
 </script>
 
 <style scoped>
-.description {
-	grid-area: description;
+
+.sliceInformation {
+    padding: 20px;
 }
 
-.description h2 {
-	text-align: center;
+.sliceInformation h2 {
+    text-align: center;
 	margin-bottom: 10px;
 	font-size: 26px;
 	font-weight: 400;
 }
 
-.description p {
-	overflow: hidden;
-	-webkit-line-clamp: 8;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
+.sliceInformation p {
+    overflow: hidden;
+    -webkit-line-clamp: 8;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
+
 </style>

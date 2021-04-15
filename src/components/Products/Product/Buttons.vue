@@ -1,14 +1,16 @@
 <template>
 	<div class="buttons">
 		<button class="btn">В корзину</button>
-		<button class="btn">Задать вопрос</button>
-		<button class="btn">Подробнее</button>
+		<button :class="[{neomorphismInset: questionButton},'btn']" @click="$emit('questionButton')">Задать вопрос</button>
+		<button :class="[{neomorphismInset: activeButton},'btn']" @click="$emit('detailsButton')">Подробнее</button>
 	</div>
 </template>
 
 <script>
 export default {
 	name: "Buttons",
+	props: ["activeButton", "questionButton"],
+	methods: {},
 };
 </script>
 

@@ -1,28 +1,78 @@
 <template>
-	<div class="product">
-		<Photo :photo="product.images[0]" :alt="product.title" />
+	<div :class="[{ active: activeDetails || activeQuestion }, 'product']">
+		<Photo 
+			:photo="product.images" 
+			:showSlider="activeDetails" 
+			:alt="product.title" 
+		/>
 		<Description
 			:title="product.title"
 			:description="product.description"
+			:specifications="product.specifications"
+			:activeDetails="activeDetails"
+			:activeQuestion="activeQuestion"
 		/>
 		<Price :price="product.price" />
-		<Provider :provider="product.producer.name" />
-		<Buttons />
+		<Provider
+			:provider="product.producer.name"
+		/>
+		<Buttons 
+			@detailsButton="openDetails" 
+			@questionButton="openQuestion"
+			:activeButton="activeDetails" 
+			:questionButton="activeQuestion"
+		/>
+		<CloseButton 
+			v-if="activeDetails || activeQuestion"
+			@closeButton="closeCart" 
+		/>
 	</div>
 </template>
 
 <script>
 import Photo from "./Photo";
-import Description from "./Description";
+import Description from "./Description/Description";
 import Price from "./Price";
 import Provider from "./Provider";
 import Buttons from "./Buttons";
-import Preloader from '../Preloader.vue';
+import Preloader from "../Preloader.vue";
+import CloseButton from "./CloseButton.vue";
 
 export default {
+	data() {
+		return {
+			activeDetails: false,
+			activeQuestion: false,
+		};
+	},
 	name: "Product",
-	props: ["product"],
-	components: { Photo, Description, Price, Provider, Buttons, Preloader },
+	props: ["product", "index"],
+	components: {
+		Photo,
+		Description,
+		Price,
+		Provider,
+		Buttons,
+		Preloader,
+		CloseButton,
+	},
+	methods: {
+		openDetails() {
+			this.activeQuestion = false;
+			this.activeDetails = true;
+		},
+		openQuestion() {
+			this.activeDetails = false;
+			this.activeQuestion = true;
+		},
+		closeCart() {
+			this.activeDetails = false;
+			this.activeQuestion = false;
+		},
+	},
+	// mounted() {
+	// 	console.log(this.product)
+	// }
 };
 </script>
 
@@ -36,10 +86,19 @@ export default {
 	grid-template-areas:
 		"photo description price buttons"
 		"photo description provider buttons";
+	position: relative;
+}
+
+.active {
+	grid-template-columns: 230px 135px 635px;
+	grid-template-rows: 385px 75px 135px;
+	grid-template-areas:
+		"photo photo description"
+		"buttons price description"
+		"buttons provider description";
 }
 
 .photo,
-.description,
 .price,
 .provider,
 .buttons {

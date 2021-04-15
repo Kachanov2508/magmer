@@ -10,13 +10,16 @@ export default createStore({
 		feedback: {
 			phone: false,
 			email: true
-		}
+		},
 	},
 	mutations: {
 		setProductToState(state, products) {
 			state.products.push(...products);
 			this.state.isFetching = false;
 		},
+		showFullCartProduct() {
+			this.state.activeProduct = true;
+		}
 	},
 	actions: {
 		async getProductsFromApi({ commit }) {

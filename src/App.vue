@@ -47,6 +47,31 @@ body {
 .btn:active {
 	box-shadow: inset 3px 3px 5px 0 #c6c6c6, inset -3px -3px 5px 0 #ffffff;
 }
+
+.roundButton {
+	border: none;
+	outline: none;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	font-size: 21px;
+	border-radius: 50%;
+	box-shadow: 3px 3px 5px 0 #c6c6c6, -3px -3px 5px 0 #ffffff;
+	color: #555555;
+}
+
+.roundButton img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.roundButton:active {
+	box-shadow: inset -3px -3px 5px 0 #ffffff, inset 3px 3px 5px 0 #c6c6c6;
+}
+
+
 .neomorphism {
 	box-shadow: 3px 3px 5px 0 #c6c6c6, -3px -3px 5px 0 #ffffff;
 	border-radius: 8px;

@@ -22,6 +22,7 @@ export default {
 
 	mounted() {
 		this.$store.dispatch("getProductsFromApi");
+		
 	},
 };
 </script>
