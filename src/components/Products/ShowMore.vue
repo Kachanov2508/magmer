@@ -1,24 +1,26 @@
 <template>
-  <div class="showMore">
-      <button class="btn" @click="showMore">Показать еще</button>
-  </div>
+	<div class="showMore">
+		<Button @click="showMore">Показать еще</Button>
+	</div>
 </template>
 
 <script>
+import Button from "../Elements/Buttons/Button.vue";
 export default {
-    name: "ShowMore",
-    methods: {
-        showMore() {
-            this.$store.state.ofset = this.$store.state.limit.length;
-            this.$store.dispatch('getProductsFromApi');
-        }
-    }
-}
+	components: { Button },
+	name: "ShowMore",
+	methods: {
+		showMore() {
+			this.$store.state.ofset = this.$store.state.limit.length;
+			this.$store.dispatch("getProductsFromApi");
+		},
+	},
+};
 </script>
 
 <style scoped>
-    .showMore {
-        margin-top: 120px;
-        text-align: center;
-    }
+.showMore {
+	width: 190px;
+	margin: 120px auto 0 auto;
+}
 </style>

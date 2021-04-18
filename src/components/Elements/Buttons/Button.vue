@@ -1,12 +1,12 @@
 <template>
-	<button :class="['neomorphism', {active: activeButton}]" :activeButton="activeButton">
+	<button :class="{ active: activeButton }" :activeButton="activeButton">
 		<slot>Кнопка</slot>
 	</button>
 </template>
 
 <script>
 export default {
-	props: ["activeButton"]
+	props: ["activeButton"],
 };
 </script>
 
@@ -24,12 +24,11 @@ button {
 	background-color: #e9e9e9;
 	box-shadow: 3px 3px 5px 0 #c6c6c6, -3px -3px 5px 0 #ffffff;
 
-	&:active {
-		box-shadow: inset 3px 3px 5px 0 #c6c6c6, inset -3px -3px 5px 0 #ffffff;
-	}
-
+	&:active,
 	&.active {
 		box-shadow: inset 3px 3px 5px 0 #c6c6c6, inset -3px -3px 5px 0 #ffffff;
+		font-size: 20px;
+		padding: 13px 20px 12px 20px;
 	}
 }
 </style>

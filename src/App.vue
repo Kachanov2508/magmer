@@ -5,9 +5,10 @@
 
 <script>
 import Nav from "@/components/Nav/Nav";
+import RoundButton from './components/Elements/Buttons/RoundButton.vue';
 
 export default {
-	components: { Nav }
+	components: { Nav, RoundButton }
 };
 </script>
 

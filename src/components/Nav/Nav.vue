@@ -1,13 +1,13 @@
 <template>
 	<div class="nav">
 		<router-link to="/">
-			<img src="../../assets/icon/search.svg" alt="search icon" />
+			<i class="fas fa-search"></i>
 		</router-link>
 		<router-link to="/categories">
-			<img src="../../assets/icon/categories.svg" alt="categories icon" />
+			<i class="fas fa-align-left"></i>
 		</router-link>
 		<router-link to="/cart">
-			<img src="../../assets/icon/cart.svg" alt="cart icon" />
+			<i class="fas fa-shopping-cart"></i>
 		</router-link>
 	</div>
 </template>
@@ -18,7 +18,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .nav {
 	display: grid;
 	grid-template-columns: repeat(3, max-content);
@@ -26,24 +26,25 @@ export default {
 	column-gap: 40px;
 	margin-top: 40px;
 	margin-right: 40px;
-}
 
-.nav a {
-	width: 40px;
-	height: 40px;
-	box-shadow: 3px 3px 5px 0 #c6c6c6, -3px -3px 5px 0 #ffffff;
-	padding: 10px;
-	border-radius: 50%;
-}
+	& a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 16px;
+		width: 40px;
+		height: 40px;
+		padding: 10px;
+		border-radius: 50%;
+		color: #999999;
+		text-decoration: none;
+		background-color: #e9e9e9;
+		box-shadow: 3px 3px 5px 0 #c6c6c6, -3px -3px 5px 0 #ffffff;
 
-.nav a.router-link-exact-active {
-	box-shadow: inset -3px -3px 5px 0 #ffffff, inset 3px 3px 5px 0 #c6c6c6;
-}
-
-.nav a img {
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
-	display: block;
+		&.router-link-exact-active {
+			box-shadow: inset -3px -3px 5px 0 #ffffff, inset 3px 3px 5px 0 #c6c6c6;
+			font-size: 15px;
+		}
+	}
 }
 </style>

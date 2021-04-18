@@ -1,81 +1,94 @@
 <template>
 	<div class="question">
-		<input class="neomorphismInset" type="text" placeholder="Имя" />
-		<input class="neomorphismInset" type="text" placeholder="+7(999)999-99-99" />
-		<input class="neomorphismInset" type="text" placeholder="Email" />
-		<textarea class="neomorphismInset" placeholder="Ваш вопрос по данному аттракциону" />
+		<Input type="text" placeholder="Имя" />
+		<Input type="text" placeholder="+7(999)999-99-99" />
+		<Input type="text" placeholder="Email" />
+		<Textarea placeholder="Ваш вопрос по данному аттракциону" />
 		<div>
 			<p>Конфиденциальность</p>
 			<p>Мы обязуемся не передавать полученную информацию третьим лицам.</p>
 		</div>
 		<div class="buttons">
-			<button class="btn">Отправить</button>
+			<Button>Отправить</Button>
 			<div class="phone">
-				<button class="roundButton">
-					<img src="../../../../assets/icon/phone.svg" alt="icon phone" />
-				</button>
-				<span>Позвонить</span>
+				<RoundButton :activeButton="phone" @click="activePhone">
+					<i class="fas fa-phone"></i>
+				</RoundButton>
+				<span @click="activePhone">Позвонить</span>
 			</div>
 			<div class="email">
-				<button class="roundButton">
-					<img src="../../../../assets/icon/email.svg" alt="icon email" />
-				</button>
-				<span>Написать</span>
+				<RoundButton :activeButton="email" @click="activeEmail">
+					<i class="fas fa-envelope"></i>
+				</RoundButton>
+				<span @click="activeEmail">Написать</span>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import Button from "../../../Elements/Buttons/Button.vue";
+import RoundButton from "../../../Elements/Buttons/RoundButton.vue";
+import Input from "../../../Elements/Form/Input.vue";
+import Textarea from "../../../Elements/Form/Textarea.vue";
 export default {
+	components: { Input, Textarea, Button, RoundButton },
 	name: "Question",
+	data() {
+		return {
+			phone: false,
+			email: true,
+		};
+	},
+	methods: {
+		activePhone() {
+			this.phone = true;
+			this.email = false;
+		},
+		activeEmail() {
+			this.email = true;
+			this.phone = false;
+		},
+	},
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .question {
-	padding: 20px;
 	display: grid;
+	grid-template-rows: max-content max-content max-content 246px max-content max-content;
+	padding: 20px;
 	row-gap: 20px;
+
+	& div {
+		& p:nth-child(1) {
+			font-size: 21px;
+			font-weight: 300;
+			margin-bottom: 5px;
+		}
+
+		& p:nth-child(2) {
+			font-weight: 300;
+		}
+	}
 }
 
 .buttons {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    column-gap: 20px;
+	display: grid;
+	grid-template-columns: 190px max-content max-content;
+	column-gap: 20px;
 }
 
-.phone, .email {
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
-    align-items: center;
-    column-gap: 10px;
-    font-size: 21px;
-}
-
-input,
-textarea {
-	border: none;
-	background: none;
-	outline: none;
-	padding: 12px 20px;
-	font-weight: 300;
+.phone,
+.email {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	align-items: center;
+	column-gap: 10px;
 	font-size: 21px;
-	color: #555555;
-	font-family: inherit;
-}
 
-textarea {
-	resize: none;
-	height: 246px;
-}
-
-.question div p:nth-child(1) {
-	font-size: 21px;
-	font-weight: 300;
-	margin-bottom: 5px;
-}
-.question div p:nth-child(2) {
-	font-weight: 300;
+	& span {
+		cursor: default;
+	}
 }
 </style>
