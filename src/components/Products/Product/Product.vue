@@ -19,7 +19,7 @@
 		<Buttons 
 			@detailsButton="openDetails" 
 			@questionButton="openQuestion"
-			:activeButton="activeDetails" 
+			:detailsButton="activeDetails" 
 			:questionButton="activeQuestion"
 		/>
 		<CloseButton 
@@ -30,11 +30,11 @@
 </template>
 
 <script>
-import Photo from "./Photo";
-import Description from "./Description/Description";
-import Price from "./Price";
-import Provider from "./Provider";
-import Buttons from "./Buttons";
+import Photo from "./Photo.vue";
+import Description from "./Description/Description.vue";
+import Price from "./Price.vue";
+import Provider from "./Provider.vue";
+import Buttons from "./Buttons.vue";
 import Preloader from "../Preloader.vue";
 import CloseButton from "./CloseButton.vue";
 

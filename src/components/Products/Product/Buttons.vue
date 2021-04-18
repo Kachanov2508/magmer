@@ -1,16 +1,17 @@
 <template>
 	<div class="buttons">
-		<button class="btn">В корзину</button>
-		<button :class="[{neomorphismInset: questionButton},'btn']" @click="$emit('questionButton')">Задать вопрос</button>
-		<button :class="[{neomorphismInset: activeButton},'btn']" @click="$emit('detailsButton')">Подробнее</button>
+		<Button>В корзину</Button>
+		<Button :activeButton="questionButton" @click="$emit('questionButton')">Задать вопрос</Button>
+		<Button :activeButton="detailsButton" @click="$emit('detailsButton')">Подробнее</Button>
 	</div>
 </template>
 
 <script>
+import Button from '../../Elements/Buttons/Button.vue';
 export default {
+	components: { Button },
 	name: "Buttons",
-	props: ["activeButton", "questionButton"],
-	methods: {},
+	props: ["detailsButton", "questionButton"],
 };
 </script>
 

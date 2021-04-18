@@ -22,12 +22,14 @@
 				<span @click="activeEmail">Написать</span>
 			</div>
 		</div>
-        <button class="btn send">Задать вопрос</button>
+		<Button>Задать вопрос</Button>
 	</div>
 </template>
 
 <script>
+import Button from '../Elements/Buttons/Button.vue';
 export default {
+	components: { Button },
 	name: "TypeConnect",
 	methods: {
 		activePhone() {
@@ -88,9 +90,5 @@ span {
 
 .active {
 	box-shadow: inset -3px -3px 5px 0 #ffffff, inset 3px 3px 5px 0 #c6c6c6;
-}
-
-.send {
-    width: 100%;
 }
 </style>

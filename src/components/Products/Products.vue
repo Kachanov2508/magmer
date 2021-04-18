@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import Product from "./Product/Product";
-import Preloader from "./Preloader";
-import ShowMore from "./ShowMore";
+import Product from "./Product/Product.vue";
+import Preloader from "./Preloader.vue";
+import ShowMore from "./ShowMore.vue";
 export default {
 	name: "Products",
 	components: { Product, Preloader, ShowMore },

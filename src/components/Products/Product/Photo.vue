@@ -2,16 +2,10 @@
 	<div class="photo">
 		<img :src="showImg" :alt="alt" @error="noPhoto" />
 		<div class="buttons" v-if="showSlider && photo.length > 1">
-			<button
-				:class="[{ disable: counter === 0 }, 'prev']"
-				@click="prevPhoto"
-			>
+			<button :class="[{ disable: counter === 0 }, 'prev']" @click="prevPhoto">
 				<i class="fas fa-chevron-left"></i>
 			</button>
-			<button
-				:class="[{ disable: counter === photo.length - 1 }, 'next']"
-				@click="nextPhoto"
-			>
+			<button :class="[{ disable: counter === photo.length - 1 }, 'next']" @click="nextPhoto">
 				<i class="fas fa-chevron-right"></i>
 			</button>
 		</div>
@@ -45,24 +39,28 @@ export default {
 	},
 	computed: {
 		showImg() {
-			return this.img !== undefined ? this.photo[this.counter] : this.img = noPhoto;
+			return this.img !== undefined ? this.photo[this.counter] : (this.img = noPhoto);
 		},
 	},
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .photo {
 	grid-area: photo;
 	position: relative;
-}
 
-.photo img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	display: block;
-	border-radius: 5px;
+	& img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		border-radius: 5px;
+	}
+
+	&:hover .buttons {
+		display: block;
+	}
 }
 
 .buttons {
@@ -72,41 +70,44 @@ export default {
 	bottom: 0;
 	left: 0;
 	display: none;
-}
 
-.photo:hover .buttons {
-	display: block;
-}
+	& button {
+		color: #f7f7f7;
+		background: rgba(0, 0, 0, 0.3);
+		border-radius: 4px;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		padding: 5px 10px;
+	}
 
-.buttons button {
-	color: #f7f7f7;
-	background: rgba(0, 0, 0, 0.3);
-	border-radius: 4px;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	padding: 5px 10px;
-}
+	& .prev {
+		font-size: 25px;
+		left: 25px;
 
-.prev {
-	font-size: 25px;
-	left: 25px;
-}
-.prev:active {
-	font-size: 23px;
-}
-.next {
-	font-size: 25px;
-	right: 25px;
-}
-.next:active {
-	font-size: 23px;
-}
-.buttons .disable {
-	color: #777777;
-	font-size: 25px;
+		&:active {
+			font-size: 23px;
+		}
+	}
+
+	& .next {
+		font-size: 25px;
+		right: 25px;
+
+		&:active {
+			font-size: 23px;
+		}
+	}
+
+	& .disable {
+		color: #777777;
+
+		&:active {
+			font-size: 25px;
+		}
+	}
 }
 </style>

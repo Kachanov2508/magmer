@@ -10,7 +10,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .closeButton {
 	position: absolute;
 	top: -20px;
@@ -23,15 +23,15 @@ export default {
 	border: none;
 	outline: none;
 	cursor: pointer;
-}
 
-.closeButton:active {
-    box-shadow: inset -3px -3px 5px 0 #ffffff, inset 3px 3px 5px 0 #c6c6c6;
-}
+	&:active {
+    	box-shadow: inset -3px -3px 5px 0 #ffffff, inset 3px 3px 5px 0 #c6c6c6;
+	}
 
-img {
-	width: 14px;
-	height: 14px;
-	object-fit: contain;
+	& img {
+		width: 14px;
+		height: 14px;
+		object-fit: contain;
+	}
 }
 </style>

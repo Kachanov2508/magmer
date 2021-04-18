@@ -2,20 +2,18 @@
 	<div class="contacts neomorphism">
 		<p>Обратная связь</p>
 		<p>Заполните форму и мы обязательно свяжемся с вами</p>
-		<form>
-			<input class="neomorphismInset" type="text" placeholder="Имя" />
-			<input
-				class="neomorphismInset"
-				type="tel"
-				placeholder="+7(999)999-99-99"
-			/>
-			<input class="neomorphismInset" type="email" placeholder="Email" />
-		</form>
+		<div>
+			<Input type="text" placeholder="Имя" />
+			<Input type="tel" placeholder="+7(999)999-99-99" />
+			<Input type="email" placeholder="Email" />
+		</div>
 	</div>
 </template>
 
 <script>
+import Input from "@/components/Elements/Form/Input.vue";
 export default {
+	components: { Input },
 	name: "Contacts",
 };
 </script>
@@ -31,22 +29,9 @@ export default {
 	font-weight: 500;
 }
 
-.contacts form {
+.contacts div {
 	margin-top: 20px;
 	display: grid;
 	row-gap: 20px;
-}
-
-.contacts form input {
-	background: none;
-	border: none;
-	outline: none;
-	padding: 12px 20px;
-	font-size: 21px;
-	color: #555555;
-}
-
-.contacts form input:placeholder {
-	color: #999999;
 }
 </style>

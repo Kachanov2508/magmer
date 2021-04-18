@@ -31,9 +31,6 @@ h1:hover span {
 	top: 20px;
 	display: inline-block;
 	-webkit-animation: bounce 0.3s ease infinite alternate;
-	/* text-shadow: 0 1px 0 #98b8cf, 0 2px 0 #98b8cf, 0 3px 0 #98b8cf, 0 4px 0 #98b8cf,
-		0 5px 0 #98b8cf, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent,
-		0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.3); */
 }
 
 h1 span:nth-child(2) {
@@ -60,9 +57,6 @@ h1 span:nth-child(6) {
 @-webkit-keyframes bounce {
 	100% {
 		top: -20px;
-		/* text-shadow: 0 1px 0 #98b8cf, 0 2px 0 #98b8cf, 0 3px 0 #98b8cf, 0 4px 0 #98b8cf,
-			0 5px 0 #98b8cf, 0 6px 0 #98b8cf, 0 7px 0 #98b8cf, 0 8px 0 #98b8cf, 0 9px 0 #98b8cf,
-			0 50px 25px rgba(0, 0, 0, 0.1); */
 	}
 }
 </style>
