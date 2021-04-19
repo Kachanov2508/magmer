@@ -17,9 +17,6 @@ export default createStore({
 			state.products.push(...products);
 			this.state.isFetching = false;
 		},
-		showFullCartProduct() {
-			this.state.activeProduct = true;
-		}
 	},
 	actions: {
 		async getProductsFromApi({ commit }) {

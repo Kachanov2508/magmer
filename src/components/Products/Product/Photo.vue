@@ -1,7 +1,7 @@
 <template>
 	<div class="photo">
 		<img :src="showImg" :alt="alt" @error="noPhoto" />
-		<div class="buttons" v-if="showSlider && photo.length > 1">
+		<div class="buttons" v-if="activeDetails && photo.length > 1 || activeQuestion && photo.length > 1">
 			<button :class="[{ disable: counter === 0 }, 'prev']" @click="prevPhoto">
 				<i class="fas fa-chevron-left"></i>
 			</button>
@@ -24,7 +24,7 @@ export default {
 
 	name: "Photo",
 
-	props: ["photo", "alt", "showSlider"],
+	props: ["photo", "alt", "activeQuestion", "activeDetails"],
 
 	methods: {
 		noPhoto() {

@@ -2,7 +2,8 @@
 	<div :class="[{ active: activeDetails || activeQuestion }, 'product']">
 		<Photo 
 			:photo="product.images" 
-			:showSlider="activeDetails" 
+			:activeDetails="activeDetails" 
+			:activeQuestion="activeQuestion" 
 			:alt="product.title" 
 		/>
 		<Description
@@ -70,9 +71,6 @@ export default {
 			this.activeQuestion = false;
 		},
 	},
-	// mounted() {
-	// 	console.log(this.product)
-	// }
 };
 </script>
 

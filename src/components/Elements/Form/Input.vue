@@ -3,8 +3,7 @@
         :type="type" 
         :placeholder="placeholder" 
         v-model="value"
-        @keyup="test"
-    >
+    />
 </template>
 
 <script>
@@ -16,11 +15,6 @@
         },
         name: "Input",
         props: ["type", "placeholder"],
-        methods: {
-            test() {
-                console.log(this.value)
-            }
-        }
     }
 </script>
 

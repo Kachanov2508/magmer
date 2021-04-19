@@ -2,7 +2,7 @@
 	<textarea class="neomorphism__inset"
         :placeholder="placeholder" 
         v-model="value" 
-        @keyup="test" />
+	/>
 </template>
 
 <script>
@@ -14,11 +14,6 @@ export default {
 	},
 	name: "Textarea",
 	props: ["placeholder"],
-	methods: {
-		test() {
-			console.log(this.value);
-		},
-	},
 };
 </script>
 

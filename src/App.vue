@@ -5,10 +5,19 @@
 
 <script>
 import Nav from "@/components/Nav/Nav";
-import RoundButton from './components/Elements/Buttons/RoundButton.vue';
+import RoundButton from "./components/Elements/Buttons/RoundButton.vue";
+import InvalidBrowser from './components/InvalidBrowser/InvalidBrowser.vue';
 
 export default {
-	components: { Nav, RoundButton }
+	data() {
+		return {
+			browser: true
+		}
+	},
+	components: { Nav, RoundButton, InvalidBrowser },
+	mounted() {
+		this.$store.dispatch("getProductsFromApi");
+	},
 };
 </script>
 
