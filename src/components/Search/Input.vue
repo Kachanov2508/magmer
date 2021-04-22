@@ -1,13 +1,24 @@
 <template>
 	<div class="box">
 		<img src="../../assets/icon/search.svg" alt="search icon" />
-		<input type="text" placeholder="Что вы хотите найти?" />
+		<input type="text" placeholder="Что вы хотите найти?" v-model="value" @input="search" />
 	</div>
 </template>
 
 <script>
 export default {
 	name: "Input",
+	data() {
+		return {
+			value: ""
+		}
+	},
+	methods: {
+		search() {
+			this.$store.state.searchValue = this.value
+			this.$store.dispatch('searchProduct')
+		}
+	}
 };
 </script>
 

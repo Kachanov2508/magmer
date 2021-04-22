@@ -9,7 +9,7 @@
 			<Preloader v-for="(item, index) in 7" :key="index" />
 		</div>
 	</div>
-	<ShowMore />
+	<ShowMore v-if="$store.state.showMore.length >= $store.state.limit" />
 </template>
 
 <script>

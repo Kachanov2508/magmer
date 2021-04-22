@@ -11,7 +11,6 @@ export default {
 	name: "ShowMore",
 	methods: {
 		showMore() {
-			this.$store.state.ofset = this.$store.state.limit.length;
 			this.$store.dispatch("getProductsFromApi");
 		},
 	},

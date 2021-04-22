@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Logo from "./Logo";
-import Input from "./Input";
-import Example from "./Example";
+import Logo from "./Logo.vue";
+import Input from "./Input.vue";
+import Example from "./Example.vue";
 
 export default {
 	components: { Logo, Input, Example },
