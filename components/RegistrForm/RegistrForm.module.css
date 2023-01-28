@@ -1,0 +1,88 @@
+.container {
+    width: 500px;
+    margin-top: 70px;
+    margin-bottom: 50px;
+    padding: 40px 40px 50px 40px;   
+}
+
+.form div {
+    position: relative;
+}
+
+.error {
+    border: 1px solid rgba(244, 67, 54, 0.4);
+}
+
+.logoContainer {
+    margin-bottom: 20px;
+}
+
+.succes {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form div p {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background-color: var(--bcg-color);
+    color: rgb(244, 67, 54);
+    border: 1px solid rgba(244, 67, 54, 0.4);
+    padding: 0 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form div input {
+    margin-bottom: 25px;
+}
+
+.form button {
+    margin-top: 20px;
+}
+
+.auth {
+    text-align: center;
+    margin-top: 40px;
+    color: #4C80A4;
+}
+
+
+
+@media(max-width: 600px) {
+    .container {
+        width: 350px;
+    }
+}
+
+@media(max-width: 420px) {
+    .container {
+        width: 300px;
+    }
+
+    .logo {
+        font-size: 40px;
+    }
+
+    .form input {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 350px) {
+    .container {
+        width: 250px;
+        padding: 20px 20px 40px 20px;   
+    }
+
+    .logo {
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
+
+    .form input {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,48 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+    font-size: 53px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #4C80A4;
+    cursor: default;
+  }
+  
+  .logo:hover span {
+    position: relative;
+    top: 0px;
+    -webkit-animation: bounce 0.3s ease infinite alternate;
+  }
+  
+  .logo span:nth-child(2) {
+    -webkit-animation-delay: 0.1s;
+  }
+  
+  .logo span:nth-child(3) {
+    -webkit-animation-delay: 0.2s;
+  }
+  
+  .logo span:nth-child(4) {
+    -webkit-animation-delay: 0.3s;
+  }
+  
+  .logo span:nth-child(5) {
+    -webkit-animation-delay: 0.4s;
+  }
+  
+  .logo span:nth-child(6) {
+    -webkit-animation-delay: 0.5s;
+  }
+  
+  @keyframes bounce {
+    0% {
+      top: 0px;
+    }
+    100% {
+      top: -20px;
+    }
+  }
