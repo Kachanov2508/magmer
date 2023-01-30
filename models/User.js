@@ -1,72 +1,81 @@
-import mongoose, { Schema } from 'mongoose';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import mongoose, { Schema } from "mongoose";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const userSchema = new Schema({
-    company: {
-        type: String,
-        required: [true, 'Укажите название компании'],
-        trim: true,
-    },
-    site: {
-        type: String,
-        required: [true, 'Укажите сайт компании'],
-    },
-    email: {
-        type: String,
-        required: [true, 'Укажите email'],
-        unique: true,
-        lowecase: true,
+	company: {
+		type: String,
+		required: [true, "Укажите название компании"],
+		trim: true,
+	},
+	site: {
+		type: String,
+		required: [true, "Укажите сайт компании"],
+	},
+	email: {
+		type: String,
+		required: [true, "Укажите email"],
+		unique: true,
+		lowecase: true,
 		match: [/([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|"([]!#-[^-~ \t]|(\\[\t -~]))+")@[0-9A-Za-z]([0-9A-Za-z-]{0,61}[0-9A-Za-z])?(\.[0-9A-Za-z]([0-9A-Za-z-]{0,61}[0-9A-Za-z])?)+/, "Некорректный email"],
-    },
-    phone: {
-        type: String,
-        required: [true, 'Укажите номер телефона'],
-    },
-    password: {
-        type: String,
-        required: [true, 'Укажите пароль'],
-        minLength: [5, 'Пароль должен состоять минимум из 5 символов'],
-    },
-    role: {
-        type: String,
-        default: 'Supplier',
-    },
-    status: {
+	},
+	phone: {
+		type: String,
+		required: [true, "Укажите номер телефона"],
+	},
+	password: {
+		type: String,
+		required: [true, "Укажите пароль"],
+		minLength: [5, "Пароль должен состоять минимум из 5 символов"],
+	},
+	role: {
+		type: String,
+		required: true,
+		default: "Supplier",
+	},
+	status: {
 		type: String,
 		required: true,
 		default: "Pending",
 	},
-    token: {
-        type: String,
-    }
+	token: {
+		type: String,
+	},
 });
 
 // Хэшировать пароль и добавить токен
-userSchema.pre('save', async function(next) {
-    try {
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(this.password, salt);
-        this.password = hash;
+userSchema.pre("save", async function (next) {
+	if (this.status === "Pending") {
+		try {
+			const salt = await bcrypt.genSalt(10);
+			const hash = await bcrypt.hash(this.password, salt);
+			this.password = hash;
 
-        let token = await bcrypt.hash(this.email, 10);
-        this.token = token.split('/').join(''); // Удаляет slash чтобы браузере не разделять на стр.
+			let token = await bcrypt.hash(this.email, 10);
+			this.token = token.split("/").join(""); // Удаляет slash чтобы браузере не разделять на стр.
 
-        next();
-    } catch (error) {
-        next(error);
-    }
+			next();
+		} catch (error) {
+			next(error);
+		}
+	}
 });
 
+userSchema.methods.comparePassword = async function (password) {
+	return await bcrypt.compare(password, this.password);
+};
 
-// userSchema.methods.comparePassword = async function(password) {
-//     return await bcrypt.compare(password, this.password);
-// };
+userSchema.methods.generateAuthToken = function () {
+	const payload = {
+		id: this._id,
+		company: this.company,
+		site: this.site,
+		email: this.email,
+		phone: this.phone,
+	};
+	return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
+};
 
-// userSchema.method.generateAuthToken = function() {
-//     return jwt.sign({ _id: this._id }, process.env.JWT_SECRET);
-// }
-
-const User = mongoose.models.User || mongoose.model('User', userSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 export default User;

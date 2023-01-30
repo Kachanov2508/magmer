@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import classes from "./RegistrForm.module.css";
 import axios from "axios";
-import Logo from "../Logo/Logo";
+import Logo from "@/components/Logo/Logo";
 
 const RegistrForm = () => {
 	const [company, setCompany] = useState("");
@@ -67,7 +67,7 @@ const RegistrForm = () => {
 
 			<form className={classes.form} onSubmit={(e) => submitHandler(e)}>
 				<div>
-					<input className={`${errors.company && classes.error} input neomorphismInset`} type="text" name="company" placeholder="Название компании *" value={company} onChange={(e) => setCompany(e.target.value)} autoComplete="off" />
+					<input className={`${errors.company && classes.error} input neomorphismInset`} type="text" name="company" placeholder="Название компании" value={company} onChange={(e) => setCompany(e.target.value)} autoComplete="off" />
 					{errors.company && <p>{errors.company.message}</p>}
 				</div>
 
@@ -77,22 +77,22 @@ const RegistrForm = () => {
 				</div>
 
 				<div>
-					<input className={`${errors.email && classes.error} input neomorphismInset`} type="text" name="email" placeholder="Email *" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="off" />
+					<input className={`${errors.email && classes.error} input neomorphismInset`} type="text" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="off" />
 					{errors.email && <p>{errors.email.message}</p>}
 				</div>
 
 				<div>
-					<input className={`${errors.phone && classes.error} input neomorphismInset`} type="text" name="phone" placeholder="Телефон *" value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete="off" />
+					<input className={`${errors.phone && classes.error} input neomorphismInset`} type="text" name="phone" placeholder="Телефон" value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete="off" />
 					{errors.phone && <p>{errors.phone.message}</p>}
 				</div>
 
 				<div>
-					<input className={`${errors.password && classes.error} input neomorphismInset`} type="password" name="password" placeholder="Пароль *" value={password} onChange={(e) => setPassword(e.target.value)} />
+					<input className={`${errors.password && classes.error} input neomorphismInset`} type="password" name="password" placeholder="Пароль" value={password} onChange={(e) => setPassword(e.target.value)} />
 					{errors.password && <p>{errors.password.message}</p>}
 				</div>
 
 				<div>
-					<input className={`${errors.password && classes.error} input neomorphismInset`} type="password" name="confirm_password" placeholder="Подтвердите пароль *" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+					<input className={`${errors.password && classes.error} input neomorphismInset`} type="password" name="confirm_password" placeholder="Подтвердите пароль" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
 					{errors.password && <p>{errors.password.message}</p>}
 				</div>
 
@@ -102,7 +102,7 @@ const RegistrForm = () => {
 			</form>
 			
 			<div className={classes.auth}>
-				<Link href="/auth">Уже есть аккаунт</Link>
+				<Link href="/login">Уже есть аккаунт?</Link>
 			</div>
 		</div>
 	);

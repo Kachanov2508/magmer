@@ -9,7 +9,7 @@
     position: relative;
 }
 
-.error {
+.inputError {
     border: 1px solid rgba(244, 67, 54, 0.4);
 }
 
@@ -17,8 +17,8 @@
     margin-bottom: 20px;
 }
 
-.succes {
-    color: #4CAF50;
+.error {
+    color: #f44336;
     text-align: center;
     margin-bottom: 30px;
 }
@@ -43,24 +43,23 @@
     margin-top: 20px;
 }
 
-.auth {
+.restore {
     text-align: center;
     margin-top: 40px;
     color: #4C80A4;
 }
 
-.auth a {
+.restore a {
     display: inline-block;
     transition: all ease-in .1s;
     background-color: transparent;
 }
 
-.auth a:hover {
+.restore a:hover {
     text-shadow: 0 10px 20px rgb(0 0 0 / 40%);
     color: #1c8ac7;
     transform: scale(1.2);
 }
-
 
 
 @media(max-width: 600px) {

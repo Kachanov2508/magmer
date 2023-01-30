@@ -33,7 +33,7 @@ const ConfitmEmailPage = () => {
 				
 				if (response.data.status) {
 					setStatus('Success');
-					redirect(31000, 'auth');
+					redirect(31000, 'login');
 				} else {
 					setStatus('Fail');
 					redirect(31000, 'registr');
