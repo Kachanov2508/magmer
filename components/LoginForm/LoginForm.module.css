@@ -1,3 +1,5 @@
+/* Контейнер */
+
 .container {
     width: 500px;
     margin-top: 70px;
@@ -5,22 +7,32 @@
     padding: 40px 40px 50px 40px;   
 }
 
-.form div {
-    position: relative;
-}
 
-.inputError {
-    border: 1px solid rgba(244, 67, 54, 0.4);
-}
+/* Лого */
 
 .logoContainer {
     margin-bottom: 20px;
 }
 
+
+/* Текст ошибки */
+
 .error {
     color: #f44336;
     text-align: center;
     margin-bottom: 30px;
+}
+
+
+
+/* Ошибка в input */
+
+.form div {
+    position: relative;
+}
+
+.form div .inputError {
+    border: 1px solid rgba(244, 67, 54, 0.4);
 }
 
 .form div p {
@@ -35,31 +47,36 @@
     font-size: 14px;
 }
 
-.form div input {
-    margin-bottom: 25px;
-}
+
+
+/* Кновка формы */
 
 .form button {
     margin-top: 20px;
 }
 
-.restore {
+
+
+/* Забыли пароль? */
+
+.link {
     text-align: center;
     margin-top: 40px;
     color: #4C80A4;
 }
 
-.restore a {
+.link a {
     display: inline-block;
     transition: all ease-in .1s;
     background-color: transparent;
 }
 
-.restore a:hover {
+.link a:hover {
     text-shadow: 0 10px 20px rgb(0 0 0 / 40%);
     color: #1c8ac7;
     transform: scale(1.2);
 }
+
 
 
 @media(max-width: 600px) {
@@ -67,6 +84,8 @@
         width: 350px;
     }
 }
+
+
 
 @media(max-width: 420px) {
     .container {
@@ -81,6 +100,8 @@
         font-size: 16px;
     }
 }
+
+
 
 @media(max-width: 350px) {
     .container {

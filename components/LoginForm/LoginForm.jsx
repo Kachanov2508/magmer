@@ -1,13 +1,16 @@
 "use client";
 
+import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 
 import classes from "./LoginForm.module.css";
 import Logo from "@/components/Logo/Logo";
+import Spinner from '../Spiner/Spinner';
 
 const LoginForm = () => {
+	const router = useRouter()
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState({});
@@ -18,22 +21,26 @@ const LoginForm = () => {
 		e.preventDefault();
 
 		if(!email) {
-			setErrors({ email: 'Укажите email' })
+			setErrors({ email: 'Укажите email' });
+			setResponse({});
 			return
 		}
 		
 		if(!password) {
 			setErrors({ password: 'Укажите пароль' })
+			setResponse({});
 			return
 		}
 
-		
 		setDisabledBtn(true);
 
 		const response = await axios.post("/api/admin/user/login", { email, password });
 		setResponse(response.data);
 
-		if(!response.data.status) {
+		if(response.data.status) {
+			localStorage.setItem('tiken', response.data.token);
+			router.push('/admin');
+		} else {
 			setErrors({});
 		}
 
@@ -42,34 +49,57 @@ const LoginForm = () => {
 	};
 
 	return (
-		<div className={`${classes.container} neomorphism`}>
+		<div className={classes.container + ' neo'}>
+			
 			<div className={classes.logoContainer}>
 				<Logo />
 			</div>
 
-			{
-				response.errors && (
-					<div className={classes.error}>
-						<p>{response.message}</p>
-					</div>
-				)
-			}
+			{response.errors && (
+				<div className={classes.error}>
+					<p>{response.message}</p>
+				</div>
+			)}
 
 			<form className={classes.form} onSubmit={(e) => submitHandler(e)}>
 				<div>
-					<input className={`${errors.email && classes.inputError} input neomorphismInset`} type="text" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="off" />
+					<input 
+						className={`${errors.email && classes.inputError} input neo-inset`} 
+						type="text" 
+						name="email" 
+						autoComplete="off" 
+						placeholder="Email" 
+						value={email} 
+						onChange={(e) => setEmail(e.target.value)} 
+					/>
 					{ errors.email && <p>Укажите email</p> }
 				</div>
 
 				<div>
-					<input className={`${errors.password && classes.inputError} input neomorphismInset`} type="password" name="password" placeholder="Пароль" value={password} onChange={(e) => setPassword(e.target.value)} />
+					<input 
+						className={`${errors.password && classes.inputError} input neo-inset`} 
+						type="password" 
+						name="password" 
+						placeholder="Пароль" 
+						value={password} 
+						onChange={(e) => setPassword(e.target.value)} 
+					/>
 					{ errors.password && <p>Укажите пароль</p> }
 				</div>
 
-				<button className="btn neomorphism" type="submit" disabled={disabledBtn ? true : false}>Войти</button>
+				{!disabledBtn ? (
+					<button className="btn" type="submit">
+						Войти
+					</button>
+				) : (
+					<button className="btn" type="submit" disabled>
+						<Spinner />
+					</button>
+				)}
+				
 			</form>
 			
-			<div className={classes.restore}>
+			<div className={classes.link}>
 				<Link href="/login">Забыли пароль?</Link>
 			</div>
 		</div>

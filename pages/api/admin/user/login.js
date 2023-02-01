@@ -19,7 +19,7 @@ export default async (req, res) => {
             // Сгенерировать токен аутентификации
             const jwt = await user.generateAuthToken();
 
-            res.status(200).json({ status: true, message: 'Авторизовация прошла успешно.', token: jwt, errors: {} });
+            res.status(200).json({ status: true, message: 'Авторизовация прошла успешно.', token: jwt });
         } catch (errors) {
             res.status(500).json({ status: false, message: 'Неизвестная ошибка, Пожалуйста, попробуйте позже.', errors });
         }
