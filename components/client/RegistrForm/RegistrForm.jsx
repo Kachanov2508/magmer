@@ -5,8 +5,8 @@ import Link from "next/link";
 
 import classes from "./RegistrForm.module.css";
 import axios from "axios";
-import Logo from "@/components/Logo/Logo";
-import Spinner from '@/components/Spiner/Spinner';
+import Logo from "@/components/client/Logo/Logo";
+import Spinner from '@/components/client/Spiner/Spinner';
 
 const RegistrForm = () => {
 	const [company, setCompany] = useState("");
@@ -70,7 +70,7 @@ const RegistrForm = () => {
 				
 				<div>
 					<input 
-						className={`${errors.company && classes.inputError} input neo-inset`} 
+						className={errors.company && classes.inputError + ' input neo-inset'} 
 						type="text" 
 						name="company" 
 						placeholder="Название компании" 
@@ -82,7 +82,8 @@ const RegistrForm = () => {
 				</div>
 
 				<div>
-					<input className={`${errors.site && classes.inputError} input neo-inset`} 
+					<input 
+						className={errors.site && classes.inputError + ' input neo-inset'} 
 						type="text" 
 						name="site" 
 						placeholder="Сайт компании" 
@@ -95,7 +96,7 @@ const RegistrForm = () => {
 
 				<div>
 					<input 
-						className={`${errors.email && classes.inputError} input neo-inset`} 
+						className={errors.email && classes.inputError + ' input neo-inset'} 
 						type="text" 
 						name="email" 
 						placeholder="Email" 
@@ -107,7 +108,8 @@ const RegistrForm = () => {
 				</div>
 
 				<div>
-					<input className={`${errors.phone && classes.inputError} input neo-inset`} 
+					<input 
+						className={errors.phone && classes.inputError + ' input neo-inset'} 
 						type="text" 
 						name="phone" 
 						placeholder="Телефон" 
@@ -120,7 +122,7 @@ const RegistrForm = () => {
 
 				<div>
 					<input 
-						className={`${errors.password && classes.inputError} input neo-inset`} 
+						className={errors.password && classes.inputError + ' input neo-inset'} 
 						type="password" 
 						name="password" 
 						placeholder="Пароль" 
@@ -132,7 +134,7 @@ const RegistrForm = () => {
 
 				<div>
 					<input 
-						className={`${errors.password && classes.inputError} input neo-inset`} 
+						className={errors.password && classes.inputError + ' input neo-inset'} 
 						type="password" 
 						name="confirm_password" 
 						placeholder="Подтвердите пароль" 

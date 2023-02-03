@@ -1,9 +1,6 @@
 .spinner {
 	display: inline-block;
 	position: relative;
-	width: 20px;
-	height: 20px;
-
 	animation: rotate 1.5s linear infinite;
 }
 

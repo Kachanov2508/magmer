@@ -45,7 +45,7 @@ const userSchema = new Schema({
 
 // Хэшировать пароль и добавить токен
 userSchema.pre("save", async function (next) {
-	if (this.status === "Pending") {
+	if (this.status !== "Active") {
 		try {
 			const salt = await bcrypt.genSalt(10);
 			const hash = await bcrypt.hash(this.password, salt);
@@ -61,10 +61,12 @@ userSchema.pre("save", async function (next) {
 	}
 });
 
+// Сравнить пароли
 userSchema.methods.comparePassword = async function (password) {
 	return await bcrypt.compare(password, this.password);
 };
 
+// Генерация токена
 userSchema.methods.generateAuthToken = function () {
 	const payload = {
 		id: this._id,
@@ -75,6 +77,28 @@ userSchema.methods.generateAuthToken = function () {
 	};
 	return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
 };
+
+// Авторизация пользователя
+userSchema.statics.login = async function(email, password) {
+
+	// Поиск по email
+	const user = await this.findOne({ email });
+	if(!user) {
+		throw Error('Email или пароль указаны неверно');
+	}
+
+	// Сравнить пароли
+	const comparePassword = await user.comparePassword(password);
+	if(!comparePassword) {
+		throw Error('Email или пароль указаны неверно');
+	}
+
+	// Генерация токена
+	const token = await user.generateAuthToken();
+
+	return token;
+}
+
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 

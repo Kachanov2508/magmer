@@ -1,4 +1,4 @@
-import LoginForm from '@/components/LoginForm/LoginForm';
+import LoginForm from '@/components/client/LoginForm/LoginForm';
 import classes from './page.module.css';
 
 const AuthPage = () => {

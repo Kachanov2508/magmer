@@ -4,8 +4,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import Counter from "@/components/Counter/Counter";
-import Salute from "@/components/Salute/Salute";
+import Counter from "@/components/client/Counter/Counter";
+import Salute from "@/components/client/Salute/Salute";
 import classes from "./page.module.css";
 
 

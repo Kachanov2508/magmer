@@ -6,7 +6,7 @@ import Link from "next/link";
 import axios from "axios";
 
 import classes from "./LoginForm.module.css";
-import Logo from "@/components/Logo/Logo";
+import Logo from "@/components/client/Logo/Logo";
 import Spinner from '../Spiner/Spinner';
 
 const LoginForm = () => {
@@ -38,7 +38,8 @@ const LoginForm = () => {
 		setResponse(response.data);
 
 		if(response.data.status) {
-			localStorage.setItem('tiken', response.data.token);
+			localStorage.setItem('token', response.data.token);
+			document.cookie = `token=${response.data.token}`;
 			router.push('/admin');
 		} else {
 			setErrors({});
@@ -55,7 +56,7 @@ const LoginForm = () => {
 				<Logo />
 			</div>
 
-			{response.errors && (
+			{!response.status && (
 				<div className={classes.error}>
 					<p>{response.message}</p>
 				</div>

@@ -3,9 +3,9 @@
 import Link from "next/link";
 import cls from "./Navbar.module.css";
 
-import SearchIcon from "@/components/Icons/SearchIcon";
+import SearchIcon from "@/components/client/Icons/SearchIcon";
 // import CategoryIcon from "@/components/Icons/CategoryIcon";
-import PartnershipIcon from "@/components/Icons/PartnershipIcon";
+import PartnershipIcon from "@/components/client/Icons/PartnershipIcon";
 import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
